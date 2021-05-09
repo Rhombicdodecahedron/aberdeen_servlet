@@ -1,27 +1,34 @@
 package ctrl;
 
-import beans.JSONStatham;
-import beans.PacketTCP;
-import beans.Utilisateur;
+import beans.*;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import enumeration.Ordres;
+import enumeration.*;
+
 import java.io.PrintWriter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.ws.rs.ClientErrorException;
+
 import static wrk.Constante.*;
+
 import wrk.Wrk;
 
 /**
+ * Classe Ctrl
+ * ette classe permet de contacter les méthodes du worker principal du douanier et ainsi, contacter l'ihm (PrintWriter) pour afficher des messages s'erreur ou de succès.
  *
  * @author StellaA
+ * @version 1.0
+ * @project Aberdeen module 133
+ * @since 06.05.2021
  */
 public class Ctrl {
 
     private final Wrk refWrk;
     private final HttpServletResponse response;
+    private HttpServletRequest request;
     private final PrintWriter out;
 
     private PacketTCP pktClient;
@@ -31,6 +38,7 @@ public class Ctrl {
     public Ctrl(PrintWriter out, HttpServletRequest request, HttpServletResponse response) {
         this.out = out;
         this.response = response;
+        this.request = request;
         refWrk = new Wrk(this, request);
         builder = new GsonBuilder().create();
         pktClient = new PacketTCP();
@@ -64,12 +72,16 @@ public class Ctrl {
 
     public void deconnexionUtilisateur() {
         if (refWrk.isUserConnected()) {
-            refWrk.disconnectToWorker();
-            if (refWrk.destroySession()) {
-                out.println(new JSONStatham(LOGOUT_SUCCESS, Ordres.SUCCESS));
-            } else {
-                response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-                out.println(new JSONStatham(ERROR_ACTION, Ordres.ERROR));
+            try {
+                refWrk.disconnectToWorker();
+                if (refWrk.destroySession()) {
+                    out.println(new JSONStatham(LOGOUT_SUCCESS, Ordres.SUCCESS));
+                } else {
+                    response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+                    out.println(new JSONStatham(ERROR_ACTION, Ordres.ERROR));
+                }
+            } catch (InterruptedException e) {
+                out.println(new JSONStatham("qweqweq", Ordres.ERROR));
             }
         } else {
             out.println(new JSONStatham(NEED_LOGIN, Ordres.ERROR));
@@ -79,10 +91,10 @@ public class Ctrl {
     public void getSession() {
         Utilisateur utilisateur = null;
         if (refWrk.isUserConnected()) {
-            HttpSession session = refWrk.getSession();
+            HttpSession session = refWrk.getSession(request);
             utilisateur = new Utilisateur((String) session.getAttribute(SESSION_USERNAME), (String) session.getAttribute("password"));
             utilisateur.setIsUsernamePasswordCorrect(true);
-            
+
             //utilisateur.setDate_creation((session.getAttribute("date_creation")));    
         }
 

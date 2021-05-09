@@ -1,0 +1,35 @@
+<component name="libraryTable">
+  <library name="restlib">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/restlib/hk2-api-2.2.0-b21.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/restlib/persistence-api-1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/restlib/org.eclipse.persistence.asm-2.7.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/restlib/hk2-locator-2.2.0-b21.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/restlib/javax.annotation-api-1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/restlib/jersey-container-servlet-core.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/restlib/javax.inject-2.2.0-b21.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/restlib/validation-api-1.1.0.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/restlib/org.eclipse.persistence.jpa-2.7.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/restlib/cglib-2.2.0-b21.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/restlib/org.osgi.core-4.2.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/restlib/javax.servlet-api-3.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/restlib/asm-all-repackaged-2.2.0-b21.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/restlib/guava-14.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/restlib/jersey-server.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/restlib/org.eclipse.persistence.moxy-2.7.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/restlib/org.eclipse.persistence.jpa.jpql-2.7.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/restlib/osgi-resource-locator-1.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/restlib/jersey-container-servlet.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/restlib/org.eclipse.persistence.core-2.7.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/restlib/jersey-entity-filtering-2.5.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/restlib/org.eclipse.persistence.antlr-2.7.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/restlib/jaxb-api-2.2.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/restlib/jersey-common.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/restlib/hk2-utils-2.2.0-b21.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/restlib/jersey-media-moxy-2.5.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/restlib/jersey-client.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

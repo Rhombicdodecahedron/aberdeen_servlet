@@ -1,15 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package beans;
 
 import enumeration.Ordres;
 
 /**
+ * Bean JSONStatham
+ * Ce bean contient contient un message et un ordre. Il va permet via la méthode toString, d'afficher les informations sous forme de JSON.
  *
  * @author StellaA
+ * @version 1.0
+ * @project Aberdeen module 133
+ * @since 06.05.2021
  */
 public class JSONStatham {
 
@@ -34,4 +34,13 @@ public class JSONStatham {
         return message + "|" + ordre;
     }
 
+
+/*
+    @Override
+    public String toString() {
+        return "{" +
+                "message:'" + message +
+                ", ordre:" + ordre +
+                '}';
+    } */
 }

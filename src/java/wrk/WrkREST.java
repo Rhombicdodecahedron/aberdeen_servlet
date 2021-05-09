@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package wrk;
 
 import beans.Utilisateur;
@@ -26,24 +21,36 @@ import javax.ws.rs.client.WebTarget;
  */
 public class WrkREST {
 
+    /**
+     *
+     */
     private final Client client;
+    /**
+     *
+     */
     private static final String BASE_URI = "http://stellaa.emf-informatique.ch/java_AberdeenEtatMajor/webresources/ABERDEEN";
     //private static final String BASE_URI = "http://localhost:8084/EtatMajorAberdeen/webresources/ABERDEEN";
 
+    /**
+     *
+     */
     public WrkREST() {
         client = javax.ws.rs.client.ClientBuilder.newClient();
     }
 
+    /**
+     *
+     * @param username
+     * @param password
+     * @return
+     * @throws ClientErrorException
+     */
     public Utilisateur getAppendConnectUser(String username, String password) throws ClientErrorException {
         WebTarget resource = client.target(BASE_URI).path("connectUser/" + username + "/" + password);
         String test = resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(String.class);
         Gson builder = new GsonBuilder().create();
         Utilisateur utilisateur = builder.fromJson(test, Utilisateur.class);
         return utilisateur;
-    }
-
-    public void close() {
-        client.close();
     }
 
 }

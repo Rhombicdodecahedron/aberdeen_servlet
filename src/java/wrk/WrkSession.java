@@ -6,21 +6,37 @@ import javax.servlet.http.HttpSession;
 import static wrk.Constante.*;
 
 /**
+ * Classe WrkSession
+ * Cette classe permet de gérer la session de l'utilisateur qui a fait la requête au douanier.
  *
  * @author StellaA
+ * @version 1.0
+ * @project Aberdeen module 133
+ * @since 06.05.2021
  */
 public class WrkSession {
 
-    public WrkSession() {
+    private HttpServletRequest request;
 
+    public WrkSession(HttpServletRequest request) {
+        this.request = request;
     }
 
+    /**
+     *
+     * @return
+     */
     public HttpSession getSession(HttpServletRequest request) {
         return request.getSession();
         //return request.getSession(false);
     }
 
-    public boolean createSession(HttpServletRequest request, Utilisateur utilisateur) {
+    /**
+     *
+     * @param utilisateur
+     * @return
+     */
+    public boolean createSession(Utilisateur utilisateur) {
         boolean result = false;
         if (utilisateur != null) {
 
@@ -43,7 +59,7 @@ public class WrkSession {
         return result;
     }
 
-    public boolean destroySession(HttpServletRequest request) {
+    public boolean destroySession() {
         boolean result = false;
         try {
             HttpSession session = getSession(request);
@@ -61,7 +77,7 @@ public class WrkSession {
         return result;
     }
 
-    public boolean isUserConnected(HttpServletRequest request) {
+    public boolean isUserConnected() {
         boolean result = false;
 
         HttpSession session = request.getSession(false);

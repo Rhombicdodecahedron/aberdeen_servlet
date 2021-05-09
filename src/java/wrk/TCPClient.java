@@ -14,6 +14,16 @@ import java.net.SocketAddress;
 import java.net.SocketTimeoutException;
 import static wrk.Constante.PORT;
 
+
+/**
+ * Classe TCPClient
+ * Cette classe renferme le client tcp du douanier. Ce client tcp permet de contacter l'ouvrier qui contrôle le robot.
+ *
+ * @author StellaA
+ * @version 1.0
+ * @project Aberdeen module 133
+ * @since 06.05.2021
+ */
 public class TCPClient extends Thread {
 
     public static final int RECEIVE_RATE = 10;

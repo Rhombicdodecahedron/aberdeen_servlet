@@ -3,9 +3,18 @@ package beans;
 import java.sql.Date;
 
 /**
+ * Bean Utilisateur
  *
- * @author Alexis
+ * Ce bean contient les informations de l'utilisateur (Nom d'utilisateur et mot de passe). Un paramètre
+ * isUsernamePasswordCorrect est présent pour indiquer si le mot de passe et le username de cet utilisateur sont
+ * corrects ensemble.
+ *
+ * @author StellaA
+ * @version 1.0
+ * @project Aberdeen module 133
+ * @since 06.05.2021
  */
+
 public class Utilisateur {
 
     private String username;

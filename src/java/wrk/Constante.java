@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package wrk;
 
 /**
@@ -19,8 +14,8 @@ public interface Constante {
     String IP_ROBOT = "WSTEMFA45-06";
 
     // TEXTES
-    String NEED_LOGIN_FOR_LOGOUT = "Vous devez être connecté pour pouvoir vous déconnectez";
-    String NEED_LOGIN = "Vous devez être connecté pour effectuer cette action !";
+    String NEED_LOGIN_FOR_LOGOUT = "Vous devez être connecté pour pouvoir vous déconnectez !";
+    String NEED_LOGIN = "Vous devez être connecté pour pouvoir effectuer cette action !";
     
     String ALREADY_CONNECTED = "Vous êtes déjà connecté !";
     

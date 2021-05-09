@@ -3,34 +3,52 @@ package wrk;
 import beans.PacketTCP;
 import beans.Utilisateur;
 import ctrl.Ctrl;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.ws.rs.ClientErrorException;
 
 /**
+ * Classe Wrk
+ * Cette classe permet de contacter les méthodes des sous-workers du douanier.
  *
- * @author stellaa
+ * @author StellaA
+ * @version 1.0
+ * @project Aberdeen module 133
+ * @since 06.05.2021
  */
 public class Wrk {
 
+    /**
+     * Instance de la classe TCPClient
+     */
     private TCPClient tcpClient;
+    /**
+     * Instance de la classe WrkSession
+     */
     private final WrkSession wrkSession;
+    /**
+     * Instance de la classe WrkREST
+     */
     private final WrkREST wrkREST;
+    /**
+     * Instance de la classe Ctrl
+     */
     private final Ctrl refCtrl;
 
-    private HttpServletRequest request;
-
+    /**
+     * Constructeur de la classe Wrk du douanier. Il défini les instances
+     * de wrkSession et wrkREST. Elle défini aussi les paramètres refCtrl et request.
+     *
+     * @param refCtrl représente la référence de la classe Ctrl qui est le contrôlleur du douanier.
+     * @param request représente l'objet de la requête au douanier.
+     */
     public Wrk(Ctrl refCtrl, HttpServletRequest request) {
-        wrkSession = new WrkSession();
-        wrkREST = new WrkREST();
-
         this.refCtrl = refCtrl;
-        this.request = request;
-        /*
-        tcpClient = new TCPClient(this);
-        tcpClient.connectToServer(Constante.IP_ROBOT);
-        tcpClient.start();*/
+        wrkSession = new WrkSession(request);
+        wrkREST = new WrkREST();
     }
+
 
     public void connectToWorker(String ip) {
         if (tcpClient == null) {
@@ -38,16 +56,12 @@ public class Wrk {
             tcpClient.connectToServer(Constante.IP_ROBOT);
             tcpClient.start();
         }
-
     }
 
-    public void disconnectToWorker() {
-        try {
+    public void disconnectToWorker() throws InterruptedException {
             tcpClient.disconnect();
             tcpClient.join();
             tcpClient = null;
-        } catch (InterruptedException ex) {
-        }
     }
 
     public Utilisateur connectUser(String username, String password) throws ClientErrorException {
@@ -55,19 +69,19 @@ public class Wrk {
     }
 
     public boolean destroySession() {
-        return wrkSession.destroySession(request);
+        return wrkSession.destroySession();
     }
 
     public boolean createSession(Utilisateur utilisateur) {
-        return wrkSession.createSession(request, utilisateur);
+        return wrkSession.createSession(utilisateur);
     }
 
-    public HttpSession getSession() {
+    public HttpSession getSession(HttpServletRequest request) {
         return wrkSession.getSession(request);
     }
 
     public boolean isUserConnected() {
-        return wrkSession.isUserConnected(request);
+        return wrkSession.isUserConnected();
     }
 
     public PacketTCP getWorkerMessage() {

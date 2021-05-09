@@ -8,6 +8,15 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.UUID;
 
+/**
+ * Bean PacketTCP
+ * Ce bean contient les informations du Paquet TCP qui a été sérialisé pour passer dans le tunnel TCP.
+ *
+ * @author StellaA
+ * @version 1.0
+ * @project Aberdeen module 133
+ * @since 06.05.2021
+ */
 public class PacketTCP implements Serializable {
 
     private Ordres ordre;
